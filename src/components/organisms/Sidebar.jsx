@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import ApperIcon from "@/components/ApperIcon";
 import Button from "@/components/atoms/Button";
+import { AuthContext } from "../../App";
 
 const Sidebar = () => {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
@@ -76,15 +77,28 @@ const Sidebar = () => {
           </nav>
         </div>
 
-        <div className="flex-shrink-0 p-4 border-t border-gray-200">
-          <div className="flex items-center p-3 bg-gradient-to-r from-gray-50 to-gray-100 rounded-lg">
-            <div className="w-8 h-8 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center">
-              <ApperIcon name="User" size={16} className="text-white" />
+<div className="flex-shrink-0 p-4 border-t border-gray-200">
+          <div className="flex items-center justify-between p-3 bg-gradient-to-r from-gray-50 to-gray-100 rounded-lg">
+            <div className="flex items-center">
+              <div className="w-8 h-8 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center">
+                <ApperIcon name="User" size={16} className="text-white" />
+              </div>
+              <div className="ml-3">
+                <p className="text-sm font-medium text-gray-900">Sales Team</p>
+                <p className="text-xs text-gray-500">Premium Plan</p>
+              </div>
             </div>
-            <div className="ml-3">
-              <p className="text-sm font-medium text-gray-900">Sales Team</p>
-              <p className="text-xs text-gray-500">Premium Plan</p>
-            </div>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => {
+                const { logout } = useContext(AuthContext);
+                logout();
+              }}
+              className="p-2 text-gray-400 hover:text-gray-600"
+            >
+              <ApperIcon name="LogOut" size={16} />
+            </Button>
           </div>
         </div>
       </div>

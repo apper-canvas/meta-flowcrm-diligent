@@ -22,8 +22,8 @@ const ActivityFeed = ({ limit = 10 }) => {
       setLoading(true);
       setError("");
       const data = await activityService.getAll();
-      const sortedActivities = data
-        .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+const sortedActivities = data
+        .sort((a, b) => new Date(b.CreatedOn || b.createdAt) - new Date(a.CreatedOn || a.createdAt))
         .slice(0, limit);
       setActivities(sortedActivities);
     } catch (err) {
@@ -99,7 +99,7 @@ const ActivityFeed = ({ limit = 10 }) => {
       <div className="space-y-4">
         {activities.map((activity, index) => (
           <motion.div
-            key={activity.Id}
+key={activity.Id}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.05 }}
@@ -107,18 +107,18 @@ const ActivityFeed = ({ limit = 10 }) => {
           >
             <div className="flex-shrink-0">
               <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                getActivityColor(activity.type) === "success" ? "bg-success-100" :
-                getActivityColor(activity.type) === "danger" ? "bg-red-100" :
-                getActivityColor(activity.type) === "primary" ? "bg-primary-100" :
+                getActivityColor(activity.type_c || activity.type) === "success" ? "bg-success-100" :
+                getActivityColor(activity.type_c || activity.type) === "danger" ? "bg-red-100" :
+                getActivityColor(activity.type_c || activity.type) === "primary" ? "bg-primary-100" :
                 "bg-gray-100"
               }`}>
                 <ApperIcon
-                  name={getActivityIcon(activity.type)}
+                  name={getActivityIcon(activity.type_c || activity.type)}
                   size={16}
                   className={
-                    getActivityColor(activity.type) === "success" ? "text-success-600" :
-                    getActivityColor(activity.type) === "danger" ? "text-red-600" :
-                    getActivityColor(activity.type) === "primary" ? "text-primary-600" :
+                    getActivityColor(activity.type_c || activity.type) === "success" ? "text-success-600" :
+                    getActivityColor(activity.type_c || activity.type) === "danger" ? "text-red-600" :
+                    getActivityColor(activity.type_c || activity.type) === "primary" ? "text-primary-600" :
                     "text-gray-600"
                   }
                 />
@@ -127,13 +127,13 @@ const ActivityFeed = ({ limit = 10 }) => {
             
             <div className="flex-1 min-w-0">
               <div className="flex items-center justify-between">
-                <p className="text-sm text-gray-900">{activity.description}</p>
-                <Badge variant={getActivityColor(activity.type)} size="sm">
-                  {activity.entityType}
+                <p className="text-sm text-gray-900">{activity.description_c || activity.description}</p>
+                <Badge variant={getActivityColor(activity.type_c || activity.type)} size="sm">
+                  {activity.entity_type_c || activity.entityType}
                 </Badge>
               </div>
               <p className="text-xs text-gray-500 mt-1">
-                {formatDistanceToNow(new Date(activity.createdAt), { addSuffix: true })}
+                {formatDistanceToNow(new Date(activity.CreatedOn || activity.createdAt), { addSuffix: true })}
               </p>
             </div>
           </motion.div>

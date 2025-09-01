@@ -32,14 +32,15 @@ const CompanyForm = ({ company, onSave, onCancel }) => {
 
   useEffect(() => {
     if (company) {
-      setFormData({
-        name: company.name || "",
-        industry: company.industry || "",
-        website: company.website || "",
-        phone: company.phone || "",
-        address: company.address || "",
-        city: company.city || "",
-        country: company.country || "",
+setFormData({
+        Name: company.Name || "",
+        name_c: company.name_c || "",
+        industry_c: company.industry_c || "",
+        website_c: company.website_c || "",
+        phone_c: company.phone_c || "",
+        address_c: company.address_c || "",
+        city_c: company.city_c || "",
+        country_c: company.country_c || "",
       });
     }
   }, [company]);

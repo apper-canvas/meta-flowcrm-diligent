@@ -111,8 +111,8 @@ const DataTable = ({
                 className="hover:bg-gray-50 transition-colors"
               >
                 {columns.map((column) => (
-                  <td key={column.key} className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                    {formatCellValue(row[column.key], column)}
+<td key={column.key} className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                    {formatCellValue(row[column.key], column, row)}
                   </td>
                 ))}
                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">

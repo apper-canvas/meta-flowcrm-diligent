@@ -60,10 +60,10 @@ const Deals = () => {
     if (searchTerm) {
       const term = searchTerm.toLowerCase();
       filtered = deals.filter(
-        (deal) =>
-          deal.title.toLowerCase().includes(term) ||
-          deal.stage.toLowerCase().includes(term) ||
-          deal.value.toString().includes(term)
+(deal) =>
+          deal.title_c?.toLowerCase().includes(term) ||
+          deal.stage_c?.toLowerCase().includes(term) ||
+          deal.value_c?.toString().includes(term)
       );
     }
 
@@ -100,12 +100,12 @@ const Deals = () => {
   };
 
   const getContactName = (contactId) => {
-    const contact = contacts.find(c => c.Id === contactId);
-    return contact ? `${contact.firstName} ${contact.lastName}` : "—";
+const contact = contacts.find(c => c.Id === (contactId?.Id || contactId));
+    return contact ? `${contact.first_name_c || ''} ${contact.last_name_c || ''}`.trim() : "—";
   };
 
-  const getCompanyName = (companyId) => {
-    const company = companies.find(c => c.Id === companyId);
+const getCompanyName = (companyId) => {
+    const company = companies.find(c => c.Id === (companyId?.Id || companyId));
     return company ? company.name : "—";
   };
 
@@ -122,38 +122,38 @@ const Deals = () => {
   };
 
   const columns = [
-    {
-      key: "title",
+{
+      key: "title_c",
       label: "Deal Title",
       sortable: true,
     },
     {
-      key: "value",
+      key: "value_c",
       label: "Value",
       sortable: true,
       type: "currency",
     },
     {
-      key: "stage",
+      key: "stage_c",
       label: "Stage",
       sortable: true,
       type: "badge",
       getBadgeVariant: getStageBadgeVariant,
     },
     {
-      key: "contactId",
+      key: "contact_id_c",
       label: "Contact",
       sortable: false,
       render: (value) => getContactName(value),
     },
     {
-      key: "companyId",
+      key: "company_id_c",
       label: "Company",
       sortable: false,
       render: (value) => getCompanyName(value),
     },
     {
-      key: "probability",
+      key: "probability_c",
       label: "Probability",
       sortable: true,
       render: (value) => `${value}%`,

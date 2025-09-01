@@ -55,12 +55,12 @@ const Contacts = () => {
     if (searchTerm) {
       const term = searchTerm.toLowerCase();
       filtered = contacts.filter(
-        (contact) =>
-          contact.firstName.toLowerCase().includes(term) ||
-          contact.lastName.toLowerCase().includes(term) ||
-          contact.email.toLowerCase().includes(term) ||
-          (contact.phone && contact.phone.toLowerCase().includes(term)) ||
-          (contact.position && contact.position.toLowerCase().includes(term))
+(contact) =>
+          contact.first_name_c?.toLowerCase().includes(term) ||
+          contact.last_name_c?.toLowerCase().includes(term) ||
+          contact.email_c?.toLowerCase().includes(term) ||
+          (contact.phone_c && contact.phone_c.toLowerCase().includes(term)) ||
+          (contact.position_c && contact.position_c.toLowerCase().includes(term))
       );
     }
 
@@ -96,40 +96,40 @@ const Contacts = () => {
     loadData();
   };
 
-  const getCompanyName = (companyId) => {
+const getCompanyName = (companyId) => {
     const company = companies.find(c => c.Id === companyId);
     return company ? company.name : "—";
   };
 
   const columns = [
-    {
-      key: "firstName",
+{
+      key: "first_name_c",
       label: "First Name",
       sortable: true,
     },
     {
-      key: "lastName",
+      key: "last_name_c",
       label: "Last Name",
       sortable: true,
     },
     {
-      key: "email",
+      key: "email_c",
       label: "Email",
       sortable: true,
     },
     {
-      key: "phone",
+      key: "phone_c",
       label: "Phone",
       sortable: false,
     },
     {
-      key: "companyId",
+      key: "company_id_c",
       label: "Company",
       sortable: false,
-      render: (value) => getCompanyName(value),
+      render: (value) => getCompanyName(value?.Id || value),
     },
     {
-      key: "position",
+      key: "position_c",
       label: "Position",
       sortable: false,
     },

@@ -23,12 +23,13 @@ const ContactForm = ({ contact, onSave, onCancel }) => {
     loadCompanies();
     if (contact) {
       setFormData({
-        firstName: contact.firstName || "",
-        lastName: contact.lastName || "",
-        email: contact.email || "",
-        phone: contact.phone || "",
-        companyId: contact.companyId || "",
-        position: contact.position || "",
+Name: contact.Name || "",
+        first_name_c: contact.first_name_c || "",
+        last_name_c: contact.last_name_c || "",
+        email_c: contact.email_c || "",
+        phone_c: contact.phone_c || "",
+        company_id_c: contact.company_id_c?.Id || contact.company_id_c || "",
+        position_c: contact.position_c || "",
       });
     }
   }, [contact]);
@@ -145,9 +146,9 @@ const ContactForm = ({ contact, onSave, onCancel }) => {
           onChange={handleChange}
           placeholder="Select a company"
         >
-          {companies.map((company) => (
+{companies.map((company) => (
             <option key={company.Id} value={company.Id}>
-              {company.name}
+              {company.name_c || company.Name}
             </option>
           ))}
         </Select>

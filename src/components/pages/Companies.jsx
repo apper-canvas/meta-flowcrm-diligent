@@ -56,11 +56,11 @@ const Companies = () => {
       const term = searchTerm.toLowerCase();
       filtered = companies.filter(
         (company) =>
-          company.name.toLowerCase().includes(term) ||
-          company.industry.toLowerCase().includes(term) ||
-          (company.website && company.website.toLowerCase().includes(term)) ||
-          (company.city && company.city.toLowerCase().includes(term)) ||
-          (company.country && company.country.toLowerCase().includes(term))
+company.name_c?.toLowerCase().includes(term) ||
+          company.industry_c?.toLowerCase().includes(term) ||
+          (company.website_c && company.website_c.toLowerCase().includes(term)) ||
+          (company.city_c && company.city_c.toLowerCase().includes(term)) ||
+          (company.country_c && company.country_c.toLowerCase().includes(term))
       );
     }
 
@@ -97,22 +97,22 @@ const Companies = () => {
   };
 
   const getContactCount = (companyId) => {
-    return contacts.filter(contact => contact.companyId === companyId).length;
+return contacts.filter(contact => (contact.company_id_c?.Id || contact.company_id_c) === companyId).length;
   };
 
   const columns = [
-    {
-      key: "name",
+{
+      key: "name_c",
       label: "Company Name",
       sortable: true,
     },
     {
-      key: "industry",
+      key: "industry_c",
       label: "Industry",
       sortable: true,
     },
     {
-      key: "website",
+      key: "website_c",
       label: "Website",
       sortable: false,
       render: (value) => value ? (
@@ -127,11 +127,11 @@ const Companies = () => {
       ) : "—",
     },
     {
-      key: "city",
+      key: "city_c",
       label: "Location",
       sortable: true,
       render: (value, row) => {
-        const location = [row.city, row.country].filter(Boolean).join(", ");
+        const location = [row.city_c, row.country_c].filter(Boolean).join(", ");
         return location || "—";
       },
     },

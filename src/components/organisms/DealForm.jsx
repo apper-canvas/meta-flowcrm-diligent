@@ -34,14 +34,15 @@ const DealForm = ({ deal, onSave, onCancel }) => {
   useEffect(() => {
     loadData();
     if (deal) {
-      setFormData({
-        title: deal.title || "",
-        value: deal.value || "",
-        stage: deal.stage || "Lead",
-        contactId: deal.contactId || "",
-        companyId: deal.companyId || "",
-        expectedCloseDate: deal.expectedCloseDate ? deal.expectedCloseDate.split("T")[0] : "",
-        probability: deal.probability || "25",
+setFormData({
+        Name: deal.Name || "",
+        title_c: deal.title_c || "",
+        value_c: deal.value_c || "",
+        stage_c: deal.stage_c || "Lead",
+        contact_id_c: deal.contact_id_c?.Id || deal.contact_id_c || "",
+        company_id_c: deal.company_id_c?.Id || deal.company_id_c || "",
+        expected_close_date_c: deal.expected_close_date_c ? deal.expected_close_date_c.split("T")[0] : "",
+        probability_c: deal.probability_c || "25",
       });
     }
   }, [deal]);
@@ -191,9 +192,9 @@ const DealForm = ({ deal, onSave, onCancel }) => {
           placeholder="Select a company"
           required
         >
-          {companies.map((company) => (
+{companies.map((company) => (
             <option key={company.Id} value={company.Id}>
-              {company.name}
+              {company.name_c || company.Name}
             </option>
           ))}
         </Select>
@@ -207,9 +208,9 @@ const DealForm = ({ deal, onSave, onCancel }) => {
           placeholder="Select a contact"
           required
         >
-          {getContactsForCompany().map((contact) => (
+{getContactsForCompany().map((contact) => (
             <option key={contact.Id} value={contact.Id}>
-              {contact.firstName} {contact.lastName}
+              {contact.first_name_c} {contact.last_name_c}
             </option>
           ))}
         </Select>

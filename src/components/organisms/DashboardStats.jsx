@@ -34,12 +34,12 @@ const DashboardStats = () => {
       ]);
 
       // Calculate revenue from closed won deals
-      const closedWonDeals = deals.filter(deal => deal.stage === "Closed Won");
-      const totalRevenue = closedWonDeals.reduce((sum, deal) => sum + deal.value, 0);
+const closedWonDeals = deals.filter(deal => (deal.stage_c || deal.stage) === "Closed Won");
+      const totalRevenue = closedWonDeals.reduce((sum, deal) => sum + (deal.value_c || deal.value || 0), 0);
 
       // Calculate win rate
       const closedDeals = deals.filter(deal => 
-        deal.stage === "Closed Won" || deal.stage === "Closed Lost"
+        (deal.stage_c || deal.stage) === "Closed Won" || (deal.stage_c || deal.stage) === "Closed Lost"
       );
       const winRate = closedDeals.length > 0 
         ? Math.round((closedWonDeals.length / closedDeals.length) * 100)

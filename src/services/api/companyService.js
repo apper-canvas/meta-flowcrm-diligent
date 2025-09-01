@@ -1,59 +1,201 @@
-import companiesData from "@/services/mockData/companies.json";
+import { toast } from 'react-toastify';
 
 class CompanyService {
   constructor() {
-    this.companies = [...companiesData];
+    this.tableName = 'company_c';
+    this.apperClient = null;
+    this.initializeClient();
+  }
+
+  initializeClient() {
+    if (typeof window !== 'undefined' && window.ApperSDK) {
+      const { ApperClient } = window.ApperSDK;
+      this.apperClient = new ApperClient({
+        apperProjectId: import.meta.env.VITE_APPER_PROJECT_ID,
+        apperPublicKey: import.meta.env.VITE_APPER_PUBLIC_KEY
+      });
+    }
   }
 
   async getAll() {
-    await this.delay();
-    return [...this.companies];
+    try {
+      if (!this.apperClient) this.initializeClient();
+      
+      const params = {
+        fields: [
+          {"field": {"Name": "Id"}},
+          {"field": {"Name": "Name"}},
+          {"field": {"Name": "name_c"}},
+          {"field": {"Name": "industry_c"}},
+          {"field": {"Name": "website_c"}},
+          {"field": {"Name": "phone_c"}},
+          {"field": {"Name": "address_c"}},
+          {"field": {"Name": "city_c"}},
+          {"field": {"Name": "country_c"}}
+        ]
+      };
+      
+      const response = await this.apperClient.fetchRecords(this.tableName, params);
+      
+      if (!response?.data?.length) {
+        return [];
+      }
+      
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching companies:", error?.response?.data?.message || error);
+      return [];
+    }
   }
 
-  async getById(Id) {
-    await this.delay();
-    return this.companies.find(company => company.Id === Id);
+  async getById(id) {
+    try {
+      if (!this.apperClient) this.initializeClient();
+      
+      const params = {
+        fields: [
+          {"field": {"Name": "Id"}},
+          {"field": {"Name": "Name"}},
+          {"field": {"Name": "name_c"}},
+          {"field": {"Name": "industry_c"}},
+          {"field": {"Name": "website_c"}},
+          {"field": {"Name": "phone_c"}},
+          {"field": {"Name": "address_c"}},
+          {"field": {"Name": "city_c"}},
+          {"field": {"Name": "country_c"}}
+        ]
+      };
+      
+      const response = await this.apperClient.getRecordById(this.tableName, id, params);
+      return response?.data || null;
+    } catch (error) {
+      console.error(`Error fetching company ${id}:`, error?.response?.data?.message || error);
+      return null;
+    }
   }
 
   async create(companyData) {
-    await this.delay();
-    const newCompany = {
-      ...companyData,
-      Id: Math.max(...this.companies.map(c => c.Id)) + 1,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-    };
-    this.companies.push(newCompany);
-    return newCompany;
-  }
-
-  async update(Id, companyData) {
-    await this.delay();
-    const index = this.companies.findIndex(company => company.Id === Id);
-    if (index !== -1) {
-      this.companies[index] = {
-        ...this.companies[index],
-        ...companyData,
-        updatedAt: new Date().toISOString(),
+    try {
+      if (!this.apperClient) this.initializeClient();
+      
+      const params = {
+        records: [{
+          Name: companyData.Name || companyData.name_c,
+          name_c: companyData.name_c,
+          industry_c: companyData.industry_c,
+          website_c: companyData.website_c,
+          phone_c: companyData.phone_c,
+          address_c: companyData.address_c,
+          city_c: companyData.city_c,
+          country_c: companyData.country_c
+        }]
       };
-      return this.companies[index];
+      
+      const response = await this.apperClient.createRecord(this.tableName, params);
+      
+      if (!response.success) {
+        console.error(response.message);
+        toast.error(response.message);
+        return null;
+      }
+      
+      if (response.results) {
+        const successful = response.results.filter(r => r.success);
+        const failed = response.results.filter(r => !r.success);
+        
+        if (failed.length > 0) {
+          console.error(`Failed to create company:`, failed);
+          failed.forEach(record => {
+            if (record.message) toast.error(record.message);
+          });
+        }
+        
+        return successful.length > 0 ? successful[0].data : null;
+      }
+    } catch (error) {
+      console.error("Error creating company:", error?.response?.data?.message || error);
+      return null;
     }
-    throw new Error("Company not found");
   }
 
-  async delete(Id) {
-    await this.delay();
-    const index = this.companies.findIndex(company => company.Id === Id);
-    if (index !== -1) {
-      const deletedCompany = this.companies[index];
-      this.companies.splice(index, 1);
-      return deletedCompany;
+  async update(id, companyData) {
+    try {
+      if (!this.apperClient) this.initializeClient();
+      
+      const params = {
+        records: [{
+          Id: id,
+          Name: companyData.Name || companyData.name_c,
+          name_c: companyData.name_c,
+          industry_c: companyData.industry_c,
+          website_c: companyData.website_c,
+          phone_c: companyData.phone_c,
+          address_c: companyData.address_c,
+          city_c: companyData.city_c,
+          country_c: companyData.country_c
+        }]
+      };
+      
+      const response = await this.apperClient.updateRecord(this.tableName, params);
+      
+      if (!response.success) {
+        console.error(response.message);
+        toast.error(response.message);
+        return null;
+      }
+      
+      if (response.results) {
+        const successful = response.results.filter(r => r.success);
+        const failed = response.results.filter(r => !r.success);
+        
+        if (failed.length > 0) {
+          console.error(`Failed to update company:`, failed);
+          failed.forEach(record => {
+            if (record.message) toast.error(record.message);
+          });
+        }
+        
+        return successful.length > 0 ? successful[0].data : null;
+      }
+    } catch (error) {
+      console.error("Error updating company:", error?.response?.data?.message || error);
+      return null;
     }
-    throw new Error("Company not found");
   }
 
-  delay() {
-    return new Promise(resolve => setTimeout(resolve, Math.random() * 300 + 200));
+  async delete(id) {
+    try {
+      if (!this.apperClient) this.initializeClient();
+      
+      const params = { 
+        RecordIds: [id]
+      };
+      
+      const response = await this.apperClient.deleteRecord(this.tableName, params);
+      
+      if (!response.success) {
+        console.error(response.message);
+        toast.error(response.message);
+        return false;
+      }
+      
+      if (response.results) {
+        const successful = response.results.filter(r => r.success);
+        const failed = response.results.filter(r => !r.success);
+        
+        if (failed.length > 0) {
+          console.error(`Failed to delete company:`, failed);
+          failed.forEach(record => {
+            if (record.message) toast.error(record.message);
+          });
+        }
+        
+        return successful.length > 0;
+      }
+    } catch (error) {
+      console.error("Error deleting company:", error?.response?.data?.message || error);
+      return false;
+    }
   }
 }
 
