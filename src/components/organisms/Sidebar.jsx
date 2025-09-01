@@ -1,9 +1,9 @@
-import { useState, useContext } from "react";
+import React, { useContext, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { AuthContext } from "../../App";
 import ApperIcon from "@/components/ApperIcon";
 import Button from "@/components/atoms/Button";
-import { AuthContext } from "../../App";
 
 const Sidebar = () => {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
@@ -56,7 +56,10 @@ const Sidebar = () => {
   );
 
   // Desktop Sidebar
-  const DesktopSidebar = () => (
+const DesktopSidebar = () => {
+    const { logout } = useContext(AuthContext);
+    
+    return (
     <div className="hidden lg:flex lg:flex-col lg:w-64 lg:fixed lg:inset-y-0 lg:z-50">
       <div className="flex flex-col flex-1 min-h-0 bg-white border-r border-gray-200">
         <div className="flex flex-col flex-1 pt-6 pb-4 overflow-y-auto">
@@ -92,7 +95,6 @@ const Sidebar = () => {
               variant="ghost"
               size="sm"
               onClick={() => {
-                const { logout } = useContext(AuthContext);
                 logout();
               }}
               className="p-2 text-gray-400 hover:text-gray-600"
@@ -104,7 +106,7 @@ const Sidebar = () => {
       </div>
     </div>
   );
-
+};
   // Mobile Sidebar
   const MobileSidebar = () => (
     <AnimatePresence>
