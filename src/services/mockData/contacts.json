@@ -1,0 +1,90 @@
+[
+  {
+    "Id": 1,
+    "firstName": "Sarah",
+    "lastName": "Johnson",
+    "email": "sarah.johnson@acmecorp.com",
+    "phone": "+1 (555) 123-4567",
+    "companyId": 1,
+    "position": "Marketing Director",
+    "createdAt": "2024-01-15T10:30:00Z",
+    "updatedAt": "2024-01-15T10:30:00Z"
+  },
+  {
+    "Id": 2,
+    "firstName": "Michael",
+    "lastName": "Chen",
+    "email": "m.chen@techstart.io",
+    "phone": "+1 (555) 234-5678",
+    "companyId": 2,
+    "position": "CTO",
+    "createdAt": "2024-01-16T14:15:00Z",
+    "updatedAt": "2024-01-16T14:15:00Z"
+  },
+  {
+    "Id": 3,
+    "firstName": "Emily",
+    "lastName": "Rodriguez",
+    "email": "emily@globalsolutions.com",
+    "phone": "+1 (555) 345-6789",
+    "companyId": 3,
+    "position": "VP of Sales",
+    "createdAt": "2024-01-17T09:45:00Z",
+    "updatedAt": "2024-01-17T09:45:00Z"
+  },
+  {
+    "Id": 4,
+    "firstName": "David",
+    "lastName": "Thompson",
+    "email": "david.thompson@innovateplus.com",
+    "phone": "+1 (555) 456-7890",
+    "companyId": 4,
+    "position": "CEO",
+    "createdAt": "2024-01-18T16:20:00Z",
+    "updatedAt": "2024-01-18T16:20:00Z"
+  },
+  {
+    "Id": 5,
+    "firstName": "Lisa",
+    "lastName": "Wang",
+    "email": "lisa.wang@quickbiz.net",
+    "phone": "+1 (555) 567-8901",
+    "companyId": 5,
+    "position": "Operations Manager",
+    "createdAt": "2024-01-19T11:10:00Z",
+    "updatedAt": "2024-01-19T11:10:00Z"
+  },
+  {
+    "Id": 6,
+    "firstName": "James",
+    "lastName": "Miller",
+    "email": "j.miller@acmecorp.com",
+    "phone": "+1 (555) 678-9012",
+    "companyId": 1,
+    "position": "Sales Manager",
+    "createdAt": "2024-01-20T13:30:00Z",
+    "updatedAt": "2024-01-20T13:30:00Z"
+  },
+  {
+    "Id": 7,
+    "firstName": "Amanda",
+    "lastName": "Davis",
+    "email": "amanda@techstart.io",
+    "phone": "+1 (555) 789-0123",
+    "companyId": 2,
+    "position": "Product Manager",
+    "createdAt": "2024-01-21T15:45:00Z",
+    "updatedAt": "2024-01-21T15:45:00Z"
+  },
+  {
+    "Id": 8,
+    "firstName": "Robert",
+    "lastName": "Brown",
+    "email": "robert.brown@globalsolutions.com",
+    "phone": "+1 (555) 890-1234",
+    "companyId": 3,
+    "position": "IT Director",
+    "createdAt": "2024-01-22T08:20:00Z",
+    "updatedAt": "2024-01-22T08:20:00Z"
+  }
+]

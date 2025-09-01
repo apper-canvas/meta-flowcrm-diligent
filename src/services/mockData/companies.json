@@ -1,0 +1,62 @@
+[
+  {
+    "Id": 1,
+    "name": "Acme Corporation",
+    "industry": "Technology",
+    "website": "https://acmecorp.com",
+    "phone": "+1 (555) 100-2000",
+    "address": "123 Business Blvd",
+    "city": "New York",
+    "country": "United States",
+    "createdAt": "2024-01-10T08:00:00Z",
+    "updatedAt": "2024-01-10T08:00:00Z"
+  },
+  {
+    "Id": 2,
+    "name": "TechStart Solutions",
+    "industry": "Technology",
+    "website": "https://techstart.io",
+    "phone": "+1 (555) 200-3000",
+    "address": "456 Innovation Drive",
+    "city": "San Francisco",
+    "country": "United States",
+    "createdAt": "2024-01-11T10:30:00Z",
+    "updatedAt": "2024-01-11T10:30:00Z"
+  },
+  {
+    "Id": 3,
+    "name": "Global Solutions Inc",
+    "industry": "Consulting",
+    "website": "https://globalsolutions.com",
+    "phone": "+1 (555) 300-4000",
+    "address": "789 Corporate Center",
+    "city": "Chicago",
+    "country": "United States",
+    "createdAt": "2024-01-12T14:15:00Z",
+    "updatedAt": "2024-01-12T14:15:00Z"
+  },
+  {
+    "Id": 4,
+    "name": "Innovate Plus",
+    "industry": "Manufacturing",
+    "website": "https://innovateplus.com",
+    "phone": "+1 (555) 400-5000",
+    "address": "321 Industrial Way",
+    "city": "Detroit",
+    "country": "United States",
+    "createdAt": "2024-01-13T09:45:00Z",
+    "updatedAt": "2024-01-13T09:45:00Z"
+  },
+  {
+    "Id": 5,
+    "name": "QuickBiz Networks",
+    "industry": "Finance",
+    "website": "https://quickbiz.net",
+    "phone": "+1 (555) 500-6000",
+    "address": "654 Financial Plaza",
+    "city": "Boston",
+    "country": "United States",
+    "createdAt": "2024-01-14T16:20:00Z",
+    "updatedAt": "2024-01-14T16:20:00Z"
+  }
+]

@@ -1,0 +1,98 @@
+[
+  {
+    "Id": 1,
+    "title": "Enterprise Software License",
+    "value": 75000,
+    "stage": "Proposal",
+    "contactId": 1,
+    "companyId": 1,
+    "expectedCloseDate": "2024-03-15T00:00:00Z",
+    "probability": 75,
+    "createdAt": "2024-01-15T10:30:00Z",
+    "updatedAt": "2024-01-25T14:20:00Z"
+  },
+  {
+    "Id": 2,
+    "title": "Cloud Migration Services",
+    "value": 120000,
+    "stage": "Negotiation",
+    "contactId": 2,
+    "companyId": 2,
+    "expectedCloseDate": "2024-02-28T00:00:00Z",
+    "probability": 90,
+    "createdAt": "2024-01-16T14:15:00Z",
+    "updatedAt": "2024-01-26T09:45:00Z"
+  },
+  {
+    "Id": 3,
+    "title": "Consulting Package",
+    "value": 45000,
+    "stage": "Qualified",
+    "contactId": 3,
+    "companyId": 3,
+    "expectedCloseDate": "2024-04-10T00:00:00Z",
+    "probability": 50,
+    "createdAt": "2024-01-17T09:45:00Z",
+    "updatedAt": "2024-01-17T09:45:00Z"
+  },
+  {
+    "Id": 4,
+    "title": "Manufacturing Equipment",
+    "value": 250000,
+    "stage": "Closed Won",
+    "contactId": 4,
+    "companyId": 4,
+    "expectedCloseDate": "2024-02-01T00:00:00Z",
+    "probability": 100,
+    "createdAt": "2024-01-18T16:20:00Z",
+    "updatedAt": "2024-02-01T10:15:00Z"
+  },
+  {
+    "Id": 5,
+    "title": "Financial Planning Software",
+    "value": 35000,
+    "stage": "Lead",
+    "contactId": 5,
+    "companyId": 5,
+    "expectedCloseDate": "2024-05-20T00:00:00Z",
+    "probability": 25,
+    "createdAt": "2024-01-19T11:10:00Z",
+    "updatedAt": "2024-01-19T11:10:00Z"
+  },
+  {
+    "Id": 6,
+    "title": "Marketing Automation Platform",
+    "value": 85000,
+    "stage": "Proposal",
+    "contactId": 6,
+    "companyId": 1,
+    "expectedCloseDate": "2024-03-30T00:00:00Z",
+    "probability": 75,
+    "createdAt": "2024-01-20T13:30:00Z",
+    "updatedAt": "2024-01-28T16:45:00Z"
+  },
+  {
+    "Id": 7,
+    "title": "Product Development Services",
+    "value": 150000,
+    "stage": "Closed Lost",
+    "contactId": 7,
+    "companyId": 2,
+    "expectedCloseDate": "2024-01-31T00:00:00Z",
+    "probability": 0,
+    "createdAt": "2024-01-21T15:45:00Z",
+    "updatedAt": "2024-01-31T12:00:00Z"
+  },
+  {
+    "Id": 8,
+    "title": "IT Infrastructure Upgrade",
+    "value": 95000,
+    "stage": "Negotiation",
+    "contactId": 8,
+    "companyId": 3,
+    "expectedCloseDate": "2024-03-01T00:00:00Z",
+    "probability": 90,
+    "createdAt": "2024-01-22T08:20:00Z",
+    "updatedAt": "2024-01-29T11:30:00Z"
+  }
+]

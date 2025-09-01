@@ -1,0 +1,82 @@
+[
+  {
+    "Id": 1,
+    "type": "deal_created",
+    "description": "New deal 'Enterprise Software License' created for Acme Corporation",
+    "entityType": "Deal",
+    "entityId": "1",
+    "createdAt": "2024-01-15T10:30:00Z"
+  },
+  {
+    "Id": 2,
+    "type": "contact_created",
+    "description": "New contact 'Sarah Johnson' added to Acme Corporation",
+    "entityType": "Contact",
+    "entityId": "1",
+    "createdAt": "2024-01-15T10:30:00Z"
+  },
+  {
+    "Id": 3,
+    "type": "deal_stage_changed",
+    "description": "Deal 'Cloud Migration Services' moved to Negotiation stage",
+    "entityType": "Deal",
+    "entityId": "2",
+    "createdAt": "2024-01-26T09:45:00Z"
+  },
+  {
+    "Id": 4,
+    "type": "deal_won",
+    "description": "Deal 'Manufacturing Equipment' closed successfully for $250,000",
+    "entityType": "Deal",
+    "entityId": "4",
+    "createdAt": "2024-02-01T10:15:00Z"
+  },
+  {
+    "Id": 5,
+    "type": "company_created",
+    "description": "New company 'TechStart Solutions' added to CRM",
+    "entityType": "Company",
+    "entityId": "2",
+    "createdAt": "2024-01-11T10:30:00Z"
+  },
+  {
+    "Id": 6,
+    "type": "contact_updated",
+    "description": "Contact 'Michael Chen' information updated",
+    "entityType": "Contact",
+    "entityId": "2",
+    "createdAt": "2024-01-27T14:20:00Z"
+  },
+  {
+    "Id": 7,
+    "type": "deal_stage_changed",
+    "description": "Deal 'Marketing Automation Platform' moved to Proposal stage",
+    "entityType": "Deal",
+    "entityId": "6",
+    "createdAt": "2024-01-28T16:45:00Z"
+  },
+  {
+    "Id": 8,
+    "type": "deal_lost",
+    "description": "Deal 'Product Development Services' marked as closed lost",
+    "entityType": "Deal",
+    "entityId": "7",
+    "createdAt": "2024-01-31T12:00:00Z"
+  },
+  {
+    "Id": 9,
+    "type": "contact_created",
+    "description": "New contact 'Emily Rodriguez' added to Global Solutions Inc",
+    "entityType": "Contact",
+    "entityId": "3",
+    "createdAt": "2024-01-17T09:45:00Z"
+  },
+  {
+    "Id": 10,
+    "type": "deal_updated",
+    "description": "Deal 'IT Infrastructure Upgrade' details updated",
+    "entityType": "Deal",
+    "entityId": "8",
+    "createdAt": "2024-01-29T11:30:00Z"
+  }
+]
