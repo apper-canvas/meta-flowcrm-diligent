@@ -11,7 +11,7 @@ const StatsCard = ({
   color = "primary",
   delay = 0 
 }) => {
-  const colorClasses = {
+const colorClasses = {
     primary: {
       bg: "bg-gradient-to-br from-primary-500 to-primary-600",
       icon: "text-primary-600",
@@ -33,6 +33,9 @@ const StatsCard = ({
       iconBg: "bg-red-100",
     },
   };
+
+  // Ensure we have a valid color with fallback to primary
+  const validColor = color && colorClasses[color] ? color : 'primary';
 
   const trendIcon = trend === "up" ? "TrendingUp" : trend === "down" ? "TrendingDown" : "Minus";
   const trendColor = trend === "up" ? "text-success-600" : trend === "down" ? "text-red-600" : "text-gray-600";
@@ -64,17 +67,17 @@ const StatsCard = ({
             )}
           </div>
           <motion.div
-            className={`w-12 h-12 rounded-xl flex items-center justify-center ${colorClasses[color].iconBg}`}
+className={`w-12 h-12 rounded-xl flex items-center justify-center ${colorClasses[validColor].iconBg}`}
             whileHover={{ scale: 1.1, rotate: 5 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            <ApperIcon name={icon} size={24} className={colorClasses[color].icon} />
+<ApperIcon name={icon} size={24} className={colorClasses[validColor].icon} />
           </motion.div>
         </div>
 
         {/* Decorative gradient overlay */}
         <div className="absolute top-0 right-0 w-32 h-32 opacity-5 group-hover:opacity-10 transition-opacity">
-          <div className={`w-full h-full rounded-full ${colorClasses[color].bg} transform translate-x-16 -translate-y-16`} />
+<div className={`w-full h-full rounded-full ${colorClasses[validColor].bg} transform translate-x-16 -translate-y-16`} />
         </div>
       </Card>
     </motion.div>
