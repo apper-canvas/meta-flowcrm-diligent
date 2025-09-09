@@ -1,18 +1,19 @@
-import { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import StatsCard from "@/components/molecules/StatsCard";
-import Loading from "@/components/ui/Loading";
-import Error from "@/components/ui/Error";
 import { dealService } from "@/services/api/dealService";
 import { contactService } from "@/services/api/contactService";
 import { companyService } from "@/services/api/companyService";
-
+import { leadService } from "@/services/api/leadService";
+import Error from "@/components/ui/Error";
+import Loading from "@/components/ui/Loading";
+import StatsCard from "@/components/molecules/StatsCard";
 const DashboardStats = () => {
   const [stats, setStats] = useState({
     totalRevenue: 0,
     totalDeals: 0,
     totalContacts: 0,
-    totalCompanies: 0,
+totalCompanies: 0,
+    totalLeads: 0,
     winRate: 0,
   });
   const [loading, setLoading] = useState(true);
@@ -26,13 +27,12 @@ const DashboardStats = () => {
     try {
       setLoading(true);
       setError("");
-
-      const [deals, contacts, companies] = await Promise.all([
+const [deals, contacts, companies, leads] = await Promise.all([
         dealService.getAll(),
         contactService.getAll(),
         companyService.getAll(),
+        leadService.getAll(),
       ]);
-
       // Calculate revenue from closed won deals
 const closedWonDeals = deals.filter(deal => (deal.stage_c || deal.stage) === "Closed Won");
       const totalRevenue = closedWonDeals.reduce((sum, deal) => sum + (deal.value_c || deal.value || 0), 0);
@@ -47,8 +47,9 @@ const closedWonDeals = deals.filter(deal => (deal.stage_c || deal.stage) === "Cl
 
       setStats({
         totalRevenue,
-        totalDeals: deals.length,
+totalDeals: deals.length,
         totalContacts: contacts.length,
+        totalLeads: leads.length,
         totalCompanies: companies.length,
         winRate,
       });
@@ -88,6 +89,14 @@ const closedWonDeals = deals.filter(deal => (deal.stage_c || deal.stage) === "Cl
       color: "primary",
       trend: "up",
       trendValue: "+5%",
+    },
+{
+      title: "Total Leads",
+      value: stats.totalLeads,
+      icon: "UserPlus",
+      color: "bg-gradient-to-r from-yellow-500 to-orange-500",
+      change: "+8.2%",
+      trend: "up",
     },
     {
       title: "Total Contacts",
