@@ -9,6 +9,7 @@ import Contacts from "@/components/pages/Contacts";
 import Companies from "@/components/pages/Companies";
 import Deals from "@/components/pages/Deals";
 import Leads from "@/components/pages/Leads";
+import Activities from "@/components/pages/Activities";
 import Login from '@/components/pages/Login';
 import Signup from '@/components/pages/Signup';
 import Callback from '@/components/pages/Callback';
@@ -122,6 +123,7 @@ function App() {
                   <Route path="/contacts" element={<Contacts />} />
 <Route path="/leads" element={<Leads />} />
                   <Route path="/companies" element={<Companies />} />
+                  <Route path="/activities" element={<Activities />} />
                   <Route path="/deals" element={<Deals />} />
                 </Routes>
               </div>
