@@ -35,7 +35,7 @@ const DataTable = ({
     return 0;
   });
 
-  const formatCellValue = (value, column) => {
+const formatCellValue = (value, column) => {
     if (column.type === "currency") {
       return new Intl.NumberFormat("en-US", {
         style: "currency",
@@ -50,6 +50,16 @@ const DataTable = ({
     if (column.type === "badge") {
       const badgeVariant = column.getBadgeVariant ? column.getBadgeVariant(value) : "default";
       return <Badge variant={badgeVariant}>{value}</Badge>;
+    }
+    
+    // Handle lookup field objects (e.g., {Id: 1, Name: "Company Name"})
+    if (value && typeof value === 'object' && 'Id' in value && 'Name' in value) {
+      return value.Name || "—";
+    }
+    
+    // Handle null/undefined
+    if (value === null || value === undefined) {
+      return "—";
     }
     
     return value;

@@ -99,13 +99,15 @@ const Deals = () => {
     loadData();
   };
 
-  const getContactName = (contactId) => {
-const contact = contacts.find(c => c.Id === (contactId?.Id || contactId));
+const getContactName = (contactId) => {
+    const actualId = contactId?.Id || contactId;
+    const contact = contacts.find(c => c.Id === actualId);
     return contact ? `${contact.first_name_c || ''} ${contact.last_name_c || ''}`.trim() : "—";
   };
 
 const getCompanyName = (companyId) => {
-    const company = companies.find(c => c.Id === (companyId?.Id || companyId));
+    const actualId = companyId?.Id || companyId;
+    const company = companies.find(c => c.Id === actualId);
     return company ? company.name : "—";
   };
 
@@ -144,11 +146,24 @@ const getCompanyName = (companyId) => {
       key: "contact_id_c",
       label: "Contact",
       sortable: false,
-      render: (value) => getContactName(value),
+render: (value) => {
+        // Handle lookup field object {Id, Name} or direct ID
+        if (value && typeof value === 'object' && 'Name' in value) {
+          return value.Name || "—";
+        }
+        return getContactName(value);
+      },
     },
     {
       key: "company_id_c",
-      label: "Company",
+label: "Company",
+      render: (value) => {
+        // Handle lookup field object {Id, Name} or direct ID
+        if (value && typeof value === 'object' && 'Name' in value) {
+          return value.Name || "—";
+        }
+        return getCompanyName(value);
+      },
       sortable: false,
       render: (value) => getCompanyName(value),
     },

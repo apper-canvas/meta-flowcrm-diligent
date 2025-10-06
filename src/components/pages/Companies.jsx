@@ -96,8 +96,11 @@ company.name_c?.toLowerCase().includes(term) ||
     loadData();
   };
 
-  const getContactCount = (companyId) => {
-return contacts.filter(contact => (contact.company_id_c?.Id || contact.company_id_c) === companyId).length;
+const getContactCount = (companyId) => {
+    return contacts.filter(contact => {
+      const contactCompanyId = contact.company_id_c?.Id || contact.company_id_c;
+      return contactCompanyId === companyId;
+    }).length;
   };
 
   const columns = [

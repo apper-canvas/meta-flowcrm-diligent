@@ -97,7 +97,8 @@ const Contacts = () => {
   };
 
 const getCompanyName = (companyId) => {
-    const company = companies.find(c => c.Id === companyId);
+    const actualId = companyId?.Id || companyId;
+    const company = companies.find(c => c.Id === actualId);
     return company ? company.name : "—";
   };
 
@@ -126,7 +127,13 @@ const getCompanyName = (companyId) => {
       key: "company_id_c",
       label: "Company",
       sortable: false,
-      render: (value) => getCompanyName(value?.Id || value),
+render: (value) => {
+        // Handle lookup field object {Id, Name} or direct ID
+        if (value && typeof value === 'object' && 'Name' in value) {
+          return value.Name || "—";
+        }
+        return getCompanyName(value);
+      },
     },
     {
       key: "position_c",
